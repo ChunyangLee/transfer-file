@@ -16,8 +16,6 @@ https://blog.csdn.net/zhh763984017/article/details/120072425
 
 ![](C:\Users\lichunyang\AppData\Roaming\marktext\images\2022-07-10-13-07-26-image.png)
 
-
-
 # 4. 上下文管理器
 
 可以自己定义一个类，实现__enter__和__exit__协议，但是这样比较复杂，python提供了一个装饰器，contextlib， 但是处理异常还要使用try,except
@@ -25,5 +23,11 @@ https://blog.csdn.net/zhh763984017/article/details/120072425
 ```python
 https://www.cnblogs.com/wongbingming/p/10519553.html
 ```
+
+
+
+# 5.元编程
+
+
 
 
