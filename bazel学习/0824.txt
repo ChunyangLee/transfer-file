@@ -1,0 +1,6 @@
+
+1. make-variables 
+https://docs.bazel.build/versions/4.1.0/be/make-variables.html
+
+2. common definitions
+https://docs.bazel.build/versions/4.1.0/be/common-definitions.html#features
