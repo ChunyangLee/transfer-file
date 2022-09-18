@@ -1,0 +1,7 @@
+https://github.com/bazelbuild/rules_foreign_cc
+
+https://stackoverflow.com/questions/71023144/how-to-build-header-only-c-library-within-bazel-workspace
+
+看genrule
+
+Args对象
