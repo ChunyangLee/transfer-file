@@ -3,5 +3,7 @@ https://github.com/bazelbuild/rules_foreign_cc
 https://stackoverflow.com/questions/71023144/how-to-build-header-only-c-library-within-bazel-workspace
 
 看genrule
+https://docs.bazel.build/versions/4.1.0/be/general.html#genrule
 
 Args对象
+https://docs.bazel.build/versions/main/skylark/lib/Args.html#add_all
