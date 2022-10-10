@@ -7,3 +7,17 @@ https://docs.bazel.build/versions/4.1.0/be/general.html#genrule
 
 Args对象
 https://docs.bazel.build/versions/main/skylark/lib/Args.html#add_all
+
+----------0925---------------------------
+ctx.var ： contains a dict of configuration variables
+
+1. transition
+split transition？ transition function can also return a list of dicts or a dict of dicts in the case of a split transition.
+
+
+2. bazel 扩展， bazel-stack-vscode
+
+
+测试外部依赖变动，重新构建情况：
+1. so有变化，则会重新执行link阶段，
+2. 头文件有变化，则重新执行compile阶段，
