@@ -24,8 +24,8 @@ split transition？ transition function can also return a list of dicts or a dic
 3.新增h文件，不会重新构建
 
 测试remote-cache
-1.配置 bazel-remote server
-2. INFO: 7 processes: 2 remote cache hit, 5 internal.
+1.ubuntu配置 bazel-remote server  https://linux.cn/article-14871-1.html
+2. INFO: 7 processes: 2 remote cache hit, 5 internal.       （internal是什么？）
 如何debug是否减少时间？
 https://docs.bazel.build/versions/4.1.0/remote-caching-debug.html
 https://docs.bazel.build/versions/main/remote-execution-caching-debug.html
