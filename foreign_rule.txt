@@ -25,7 +25,10 @@ split transition？ transition function can also return a list of dicts or a dic
 
 测试remote-cache
 1.ubuntu配置 bazel-remote server  https://linux.cn/article-14871-1.html
+docker run -u 0:0 -v /home/code/learn_bazel/bazel_remote_cache:/data  -p 9090:8080 -p 9092:9092 buchgr/bazel-remote-cache
+
 2. INFO: 7 processes: 2 remote cache hit, 5 internal.       （internal是什么？）
+
 如何debug是否减少时间？
 https://docs.bazel.build/versions/4.1.0/remote-caching-debug.html
 https://docs.bazel.build/versions/main/remote-execution-caching-debug.html
