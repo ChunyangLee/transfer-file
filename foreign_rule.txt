@@ -21,3 +21,14 @@ split transition？ transition function can also return a list of dicts or a dic
 测试外部依赖变动，重新构建情况：
 1. so有变化，则会重新执行link阶段，
 2. 头文件有变化，则重新执行compile阶段，
+3.新增h文件，不会重新构建
+
+测试remote-cache
+1.配置 bazel-remote server
+2. INFO: 7 processes: 2 remote cache hit, 5 internal.
+如何debug是否减少时间？
+https://docs.bazel.build/versions/4.1.0/remote-caching-debug.html
+https://docs.bazel.build/versions/main/remote-execution-caching-debug.html
+
+Faster Bazel builds with remote caching: a benchmark  博客
+https://nicolovaligi.com/articles/faster-bazel-remote-caching-benchmark/ 
