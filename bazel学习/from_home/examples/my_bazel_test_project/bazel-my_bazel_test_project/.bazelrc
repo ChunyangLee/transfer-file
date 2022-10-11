@@ -1,0 +1,4 @@
+#build --remote_cache=http://192.168.10.129:9090
+#build -s
+build --execution_log_binary_file=/home/code/learn_bazel/exec1.log
+build --show_progress --explain=ab.log --verbose_explanations --show_result=100

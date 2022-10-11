@@ -1,0 +1,2 @@
+Build options: --execution_log_binary_file=/home/code/learn_bazel/exec1.log --show_progress --explain=ab.log --verbose_explanations --show_result=100
+Executing action 'BazelWorkspaceStatusAction stable-status.txt': unconditional execution is requested.

@@ -1,0 +1,18 @@
+load(":my_repository_rule.bzl", "my_new_local_repository")
+load("//repository_rules:ee.bzl", "repository_a", "repository_b")
+
+my_new_local_repository(
+    name = "output_release",
+    path = "/home/code/learn_bazel/examples/output_release",
+    build_file = "//external_build_file:BUILD.output_release",
+)
+
+repository_a(
+    name = "router_build",
+    path = "build",
+)
+
+repository_b(
+    name = "repository_b",
+    abc_tool = "@router_build//:main_build/abc/abc.sh"
+)

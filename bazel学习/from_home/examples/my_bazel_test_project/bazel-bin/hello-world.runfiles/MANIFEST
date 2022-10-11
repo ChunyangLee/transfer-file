@@ -1,0 +1,4 @@
+__main__/_solib_k8/_U_S_S_Cimported_Uhello-time___U/libhello-time.so /root/.cache/bazel/_bazel_root/377f06ab62ca00a07cd8283cfe64624a/execroot/__main__/bazel-out/k8-fastbuild/bin/_solib_k8/_U_S_S_Cimported_Uhello-time___U/libhello-time.so
+__main__/external/repository_b/abc.txt /root/.cache/bazel/_bazel_root/377f06ab62ca00a07cd8283cfe64624a/external/repository_b/abc.txt
+__main__/hello-world /root/.cache/bazel/_bazel_root/377f06ab62ca00a07cd8283cfe64624a/execroot/__main__/bazel-out/k8-fastbuild/bin/hello-world
+repository_b/abc.txt /root/.cache/bazel/_bazel_root/377f06ab62ca00a07cd8283cfe64624a/external/repository_b/abc.txt
