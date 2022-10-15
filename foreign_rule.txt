@@ -27,7 +27,7 @@ split transition？ transition function can also return a list of dicts or a dic
 1.ubuntu配置 bazel-remote server  https://linux.cn/article-14871-1.html
 docker run -u 0:0 -v /home/code/learn_bazel/bazel_remote_cache:/data  -p 9090:8080 -p 9092:9092 buchgr/bazel-remote-cache
 
-2. INFO: 7 processes: 2 remote cache hit, 5 internal.       （internal是什么？）
+2. INFO: 7 processes: 2 remote cache hit, 5 internal.       （internal是什么？？）
 
 如何debug是否减少时间？
 https://docs.bazel.build/versions/4.1.0/remote-caching-debug.html
@@ -35,3 +35,20 @@ https://docs.bazel.build/versions/main/remote-execution-caching-debug.html
 
 Faster Bazel builds with remote caching: a benchmark  博客
 https://nicolovaligi.com/articles/faster-bazel-remote-caching-benchmark/ 
+
+
+3. new toolchains, 使用platform，要进行toolchain的选择
+Bazel’s C++ rules use platforms to select toolchains when you set --incompatible_enable_cc_toolchain_resolution (#7260).
+根据多个flag，--> 一个platform，来选择toolchain, 
+用platform_mappings 和 cc_toolchain_suite 解决目录名字问题
+
+待测试 transition， platform，会更改toolchain，---》 已完成
+看external/local_config_cc的local例子，
+
+
+
+4. 为什么有时候bazel不会cd到sandbox目录执行，有时候会？？
+custom_cc_toolchain_with_platforms 例子不会，
+crosss-compile的例子就会
+答： 都会使用sandbox模式，只是不显示， sandbox_debug模式，执行失败会显示实际去哪个sandbox目录执行的，
+execvp permission denied问题是没有执行权限导致的， crosss-compile的例子使用加权限和软连接wrapper的方式解决。
