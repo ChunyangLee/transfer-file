@@ -52,3 +52,22 @@ custom_cc_toolchain_with_platforms 例子不会，
 crosss-compile的例子就会
 答： 都会使用sandbox模式，只是不显示， sandbox_debug模式，执行失败会显示实际去哪个sandbox目录执行的，
 execvp permission denied问题是没有执行权限导致的， crosss-compile的例子使用加权限和软连接wrapper的方式解决。
+
+
+5. 为什么不能按仓给配置文件，
+答：因为搜索路径可能交叉在不同仓中，
+那么正好配置在一个配置文件中管理，也因此就要体现仓的信息，
+每一个external repository的BUILD文件中要 遍历该配置文件，选出仓名==repository_ctx.name的那些，为每个作用域（1）创建rule描述该导入变量的头文件filegroup，配置文件要有一个字段表述filegroup_name， workspace时创建filegroup， 在其他BUILD文件中使用该filegroup、
+
+这样就统一测试代码和业务代码，
+增加一个target_custom_setting.bzl文件，配置编译该so的自定义设置，除去工具链默认的，其他自定义修改单个so构建命令的都放在这里，key是target名字，value是字典，按照src，copts属性等，因为是bzl文件，因此可以调用函数（2），把conf里面的*config.bzl里的变量转为直接用的路径或-Iexternal*等，
+业务代码编译依赖处理：
+一个bzl存放、一个字典描述一个rpm搜索路径，
+key可以理解为作用域（1），一个可以被最小导入使用的搜索路径，这样就统一了，业务代码这里看成rpm package，
+另一个bzl描述构建so的依赖，目前是按领域，一个领域一个path_group，去挑选上一个bzl的变量，
+
+note: 上面说的（1）作用域变量可以理解为一个path_group,名字可以任意起，内容格式固定，用函数parse_include_paths_from_path_group解析出搜索路径， parse_filegroup_from_path_group得到filegroup的名字，
+
+
+6.make variables 不饿能直接在repository_rule中使用--define不能用，
+
