@@ -71,8 +71,7 @@ note: 上面说的（1）作用域变量可以理解为一个path_group,名字�
 
 6.make variables 不饿能直接在repository_rule中使用--define不能用，
 
-<<<<<<< HEAD
-=======
+
 
 7. remote-execute
 https://github.com/bazelbuild/bazel-buildfarm
@@ -85,4 +84,16 @@ Usually non-hermetic behavior is introduced through repository_ctx which allows 
 https://zhuanlan.zhihu.com/p/513520653
 
 8.bazel-test，
->>>>>>> 129de985de7159d93c9003f08709da586bc78d10
+
+
+9. aspect
+
+Parameter values for the aspect are taken from the string attribute with the same name of the rule requesting the aspect (see the definition of file_count_rule).
+
+ Aspects with parameters cannot be used via the command line because there is no syntax to define the parameters
+ 
+ it is an error if a target and an aspect that is applied to it each provide a provider with the same name. The providers that a rule implementation propagates are created and frozen before aspects are applied and cannot be modified from an aspect...
+ 
+ ## 在aspect implementation中根据ctx.rule.attr.deps 访问到的是[A(Y), A(Z)]， 
+ ## 因此通过for dep in ctx.rule.attr.deps: dep[FileCountInfo]， 可以获得X的依赖的aspect的provider
+ For returning providers, the values of attributes along which the aspect is propagated (from the attr_aspect list) are replaced with the results of an application of the aspect to them. For example, if target X has Y and Z in its deps, ctx.rule.attr.deps for A(X) will be [A(Y), A(Z)]. In this example, ctx.rule.attr.deps are Target objects that are the results of applying the aspect to the ‘deps’ of the original target to which the aspect has been applied.
