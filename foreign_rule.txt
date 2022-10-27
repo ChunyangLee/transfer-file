@@ -71,3 +71,18 @@ note: 上面说的（1）作用域变量可以理解为一个path_group,名字�
 
 6.make variables 不饿能直接在repository_rule中使用--define不能用，
 
+<<<<<<< HEAD
+=======
+
+7. remote-execute
+https://github.com/bazelbuild/bazel-buildfarm
+
+Adapting Bazel Rules for Remote Execution： https://docs.bazel.build/versions/5.2.0/remote-execution-rules.html
+
+Finding Non-Hermetic Behavior in WORKSPACE Rules： https://docs.bazel.build/versions/main/workspace-log.html
+Usually non-hermetic behavior is introduced through repository_ctx which allows interacting with the host machine.
+
+https://zhuanlan.zhihu.com/p/513520653
+
+8.bazel-test，
+>>>>>>> 129de985de7159d93c9003f08709da586bc78d10
