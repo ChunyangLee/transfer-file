@@ -105,6 +105,8 @@ platform只能指定 constraint_value
 再封装成config_setting， 
 如果是固定指定platform就可以，使用platform+constraint_value就可以了
 
+----------------------------------------1113
+
 11. action_config测试， 
 工具链设置里面可以的，
 
@@ -119,3 +121,13 @@ platform只能指定 constraint_value
 官网原话： 
 Each key in a configurable attribute is a label reference to a config_setting or constraint_value.
 
+
+13. third-party-dependencies 最佳实践，
+
+    """Load the transitive dependencies of only our direct dependencies"""
+
+Imagine that we have dependency `A` and dependency `B` and dependency `A` has `B` as a requirement (`A->B`). We have two options, we could declare only `A` in our workspace or `A` and `B`. Let's see what happens in each of the situations:
+
+* **We declare only `A`**: This means that we only load the source code of `A` in the first phase and then on the second phase when loading the transitive dependencies of `A` we will also load the source code of `B`. The implication here is that the version that we will take of `B` will be define in the source code of `A`.
+
+* **We declare `A` and `B`**: This means that we load the source code of `A` and `B` in the first phase and then on the second phase when loading the transitive dependencies of `A` we will not load the source code of `B`. The implication here is that the version that we will take of `B` is the one that we explicitly declared. We will have more control regarding the version of `B` that will be used.
