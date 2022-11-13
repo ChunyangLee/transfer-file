@@ -97,3 +97,24 @@ Parameter values for the aspect are taken from the string attribute with the sam
  ## 在aspect implementation中根据ctx.rule.attr.deps 访问到的是[A(Y), A(Z)]， 
  ## 因此通过for dep in ctx.rule.attr.deps: dep[FileCountInfo]， 可以获得X的依赖的aspect的provider
  For returning providers, the values of attributes along which the aspect is propagated (from the attr_aspect list) are replaced with the results of an application of the aspect to them. For example, if target X has Y and Z in its deps, ctx.rule.attr.deps for A(X) will be [A(Y), A(Z)]. In this example, ctx.rule.attr.deps are Target objects that are the results of applying the aspect to the ‘deps’ of the original target to which the aspect has been applied.
+ 
+10. custom_setting flag
+configurable attribute 只能是  config_setting or constraint_value.
+platform只能指定 constraint_value
+因此如果想要让attr根据command-line flag变化，那么要使用 User-defined build settings， 放到custom_setting_flags目录下，
+再封装成config_setting， 
+如果是固定指定platform就可以，使用platform+constraint_value就可以了
+
+11. action_config测试， 
+工具链设置里面可以的，
+
+测试使用genrule？？
+使用$(CC) 直接用的是tool_path里面配置的，不会走action_config
+
+！！！note：统一使用工具链来编.o和.so，不分开编，遇到不同过程需要不同flag的场景使用action_config来处理，
+
+
+12. configurable attribute使用constraint_value    ---> 已完成，select不必一定使用config_setting
+官网原话： 
+Each key in a configurable attribute is a label reference to a config_setting or constraint_value.
+
