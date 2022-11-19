@@ -131,3 +131,25 @@ Imagine that we have dependency `A` and dependency `B` and dependency `A` has `B
 * **We declare only `A`**: This means that we only load the source code of `A` in the first phase and then on the second phase when loading the transitive dependencies of `A` we will also load the source code of `B`. The implication here is that the version that we will take of `B` will be define in the source code of `A`.
 
 * **We declare `A` and `B`**: This means that we load the source code of `A` and `B` in the first phase and then on the second phase when loading the transitive dependencies of `A` we will not load the source code of `B`. The implication here is that the version that we will take of `B` is the one that we explicitly declared. We will have more control regarding the version of `B` that will be used.
+
+
+------------------------- 11192047
+
+1. 使用相对路径导入，workspace？ 避免使用V8_root环境变量，
+def _impl(repository_ctx):
+    workspace_dir = repository_ctx.path(Label("//:WORKSPACE")).dirname
+    repo_dir_str = '/'.join([str(workspace_dir), repository_ctx.attr.path])
+    print(repo_dir_str)
+
+    repo_dir = repository_ctx.path(repo_dir_str)
+    print(repo_dir)
+    print(repo_dir.exists)
+
+
+my_repository = repository_rule(
+    implementation = _impl,
+    attrs = {
+        "path": attr.string(mandatory = True),
+        "workspace": attr.label(default = Label("//:WORKSPACE")),
+    }
+)
