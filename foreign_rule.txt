@@ -136,7 +136,12 @@ Imagine that we have dependency `A` and dependency `B` and dependency `A` has `B
 ------------------------- 11192047
 
 1. 使用相对路径导入，workspace？ 避免使用V8_root环境变量，
-def _impl(repository_ctx):
+relative_local_repository, 
+属性给两个， 
+一个path， 一个relative，  组合起来得到真正的path， relative给default当前的workspace，
+
+
+def _impl_relative_new_local_repository(repository_ctx):
     workspace_dir = repository_ctx.path(Label("//:WORKSPACE")).dirname
     repo_dir_str = '/'.join([str(workspace_dir), repository_ctx.attr.path])
     print(repo_dir_str)
@@ -144,10 +149,12 @@ def _impl(repository_ctx):
     repo_dir = repository_ctx.path(repo_dir_str)
     print(repo_dir)
     print(repo_dir.exists)
+    repository_ctx.symlink(repo_dir, "")
+    repository_ctx.file("WORKSPACE")
 
 
-my_repository = repository_rule(
-    implementation = _impl,
+relative_new_local_repository = repository_rule(
+    implementation = _impl_relative_new_local_repository,
     attrs = {
         "path": attr.string(mandatory = True),
         "workspace": attr.label(default = Label("//:WORKSPACE")),
