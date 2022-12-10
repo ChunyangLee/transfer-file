@@ -160,3 +160,17 @@ relative_new_local_repository = repository_rule(
         "workspace": attr.label(default = Label("//:WORKSPACE")),
     }
 )
+
+
+---------------------1123
+1. bin构建出来但是readelf -d 会出现 segfault，？？？
+
+2. 查询readelf命令？？为什么会出现segfault，才能决定bazel如何构建出bin和怎么执行
+先看编译选项是否一致？？
+
+
+1.如果要除去rpm覆盖的问题，首先去掉cmc_down节点，
+	c吗编译没问题，cmake解析依赖，外部依赖从repo拿
+	资源没问题， 检查BUILD_RES目录，这里是编出来的，会从ysd下载list去掉，
+	打包 --》 只编领域缺少其他领域的包，要下载，采用删除方式，不用cmc_down这种覆盖方式
+	下面的节点待分析？
