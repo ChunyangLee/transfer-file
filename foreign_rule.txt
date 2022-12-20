@@ -174,3 +174,11 @@ relative_new_local_repository = repository_rule(
 	资源没问题， 检查BUILD_RES目录，这里是编出来的，会从ysd下载list去掉，
 	打包 --》 只编领域缺少其他领域的包，要下载，采用删除方式，不用cmc_down这种覆盖方式
 	下面的节点待分析？
+	
+	
+2. command line options
+
+	
+	
+--------------------- 1220
+1. 公司知识：
