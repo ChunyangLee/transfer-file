@@ -181,4 +181,4 @@ relative_new_local_repository = repository_rule(
 	
 	
 --------------------- 1220
-1. 公司知识：
+1. 问KKinit.c生成那个工具，的输出情况，要声明输出，那两个头文件，
